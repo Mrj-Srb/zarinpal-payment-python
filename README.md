@@ -1,4 +1,3 @@
-
 ### ZarinPal Python Payment Gateway Integration
 
 This Python package provides a simple interface for integrating ZarinPal's payment gateway into your Python applications. It supports both sandbox and production environments, enabling you to test your payment functionality before going live.
@@ -33,7 +32,7 @@ Here is how to use the package to handle payment requests, verification, and gen
 Create an instance of the `ZarinPal` class by passing your merchant ID, callback URL, and optionally, set the sandbox environment (`True` for testing, `False` for production):
 
 ```python
-from zarinpal_payment import ZarinPal
+from zarinpal_payment.zarinpal import ZarinPal
 
 zarinpal = ZarinPal(merchant_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", callback_url="Your callback URL", sandbox=True)
 ```
@@ -51,7 +50,7 @@ response = zarinpal.payment_request(amount=1000, description="Test payment")
 Extract the payment `authority` from the response to generate the payment URL:
 
 ```python
-authority = response.get("authority")
+authority = response.get("data", {}).get("authority")
 ```
 
 #### 4. Generate Payment URL
@@ -75,7 +74,7 @@ verify_response = zarinpal.payment_verify(amount=1000, authority=authority)
 ### Example Code
 
 ```python
-from zarinpal_payment import ZarinPal
+from zarinpal_payment.zarinpal import ZarinPal
 
 # Create an instance of ZarinPal
 zarinpal = ZarinPal(merchant_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", callback_url="Your callback URL", sandbox=True)
@@ -84,7 +83,7 @@ zarinpal = ZarinPal(merchant_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", callback
 response = zarinpal.payment_request(amount=1000, description="Test payment")
 
 # Step 2: Get the authority from the response
-authority = response.get("authority")
+authority = response.get("data", {}).get("authority")
 
 # Step 3: Generate the payment URL
 payment_url = zarinpal.generate_payment_url(authority)
@@ -118,10 +117,11 @@ The package uses Python's built-in `logging` module to log requests and response
 For more details about ZarinPal's API, please refer to the official documentation:
 
 - [ZarinPal Payment API Documentation](https://next.zarinpal.com/paymentGateway/)
-- [ZarinPal Payment Documention](https://www.zarinpal.com/docs/paymentGateway/)
+- [ZarinPal Payment Documentation](https://www.zarinpal.com/docs/paymentGateway/)
 
 ---
 
 ### License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
