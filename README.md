@@ -34,7 +34,7 @@ Create an instance of the `ZarinPal` class by passing your merchant ID, callback
 ```python
 from zarinpal_payment.zarinpal import ZarinPal
 
-zarinpal = ZarinPal(merchant_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", callback_url="Your callback URL", sandbox=True)
+zarinpal = ZarinPal(merchant_id="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", callback_url="Your callback URL", sandbox=True)
 ```
 
 #### 2. Request a Payment
