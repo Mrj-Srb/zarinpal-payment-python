@@ -77,7 +77,8 @@ verify_response = zarinpal.payment_verify(amount=1000, authority=authority)
 from zarinpal_payment.zarinpal import ZarinPal
 
 # Create an instance of ZarinPal
-zarinpal = ZarinPal(merchant_id="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", callback_url="Your callback URL", sandbox=True)
+# you can use any string but must be greater than 36 characters
+zarinpal = ZarinPal(merchant_id="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", callback_url="Your callback URL", sandbox=True)
 
 # Step 1: Request a payment
 response = zarinpal.payment_request(amount=1000, description="Test payment")
